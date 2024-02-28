@@ -9,7 +9,7 @@
 
 <body>
 	<form th:action="@{/personas/actualizar/{cedula}(cedula=${persona.cedula})}" th:object="${persona}" th:method="PUT">
-	<table>
+	<table >
 		<tr >
 			<td><label>Nombre:</label></td>
 			<td><input type="text" th:field="${persona.nombre}"> </td>
