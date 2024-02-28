@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-</head>	
+</head>
+
 <body>
 	<h1>Hola Mundo</h1>
 	<table>
-	<thead>
-		<tr>
-			<th>Cedula</th>
-			<th>Nombre</th>
-			<th>Apellido</th>
-			<th>Genero</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr th:each="persona:${personas}">
-			<td th:text="${persona.cedula}"></td>
-			<td th:text="${persona.nombre}"></td>
-			<td th:text="${persona.apellido}"></td>
-			<td th:text="${persona.genero}"></td>
-		</tr>
-		
-	</tbody>
+		<thead>
+			<tr>
+				<th>Cedula</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Genero</th>
+				<th>Accion</th>
+				<th>Accion</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="persona:${personas}">
+				<td th:text="${persona.cedula}"></td>
+				<td th:text="${persona.nombre}"></td>
+				<td th:text="${persona.apellido}"></td>
+				<td th:text="${persona.genero}"></td>
+				<td>
+					<form th:action="@{/personas/buscarPorCedula/{cedulaPersona}(cedulaPersona=${persona.cedula})}" th:method="GET">
+						<input type="submit" value="Editar">
+					</form>
+				</td>
+				<td>
+					<form th:action="@{/borrar/{cedulaPersona}(cedulaPersona=${persona.cedula})}" th.method="DELETE">
+						<input type="submit" value="Eliminar">
+					</form>
+				</td>
+			</tr>
+		</tbody>
 	</table>
-</body>		
+</body>
+
 </html>
